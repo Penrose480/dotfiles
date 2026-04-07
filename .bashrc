@@ -41,7 +41,7 @@ alias semacs="Text_Editor=emacs"
 alias shelix="Text_Editor=hx"
 alias bcp="g++ ~/c++/"
 alias runcp="./a.out; rm -f ./a.out"
-alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles; cp ~/.bashrc ~/dotfiles; git add .; git commit -m 'Update $(date)'; git push"
+alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles; cp ~/.bashrc ~/dotfiles; git add .; git commit -m 'Update $(date)'; git push; cd -"
 
 [ -f "/home/pohum/.ghcup/env" ] && . "/home/pohum/.ghcup/env" # ghcup-env
 
