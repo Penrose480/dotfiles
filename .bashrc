@@ -29,7 +29,7 @@ alias udwm="cd ~/dwm-btw; sudo make clean install; cd -;"
 alias seest="$Text_Editor ~/st-btw/config.h"
 alias modst="cd ~/st-btw; sudo make clean install; cd -"
 alias emerg="sudo emerge --sync; sudo emerge --ask --verbose --deep --newuse @world; clear"
-alias cbashrc="sudo $Text_Editor ~/.bashrc"
+alias cbashrc="sudo nvim ~/.bashrc"
 alias ubashrc="source ~/.bashrc"
 alias cpicom="$Text_Editor ~/.config/picom/picom.conf"
 alias ci3=nvim" ~/.config/i3/config"
@@ -41,7 +41,7 @@ alias semacs="Text_Editor=emacs"
 alias shelix="Text_Editor=hx"
 alias bcp="g++ ~/c++/"
 alias runcp="./a.out; rm -f ./a.out"
-alias updotgit="cd ~; cd ~/dotfiles, cp -r ~/.config/nvim; cp ~/.bashrc; git add .; git commit; git push origin master"
+alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles; cp ~/.bashrc ~/dotfiles; git add .; git commit -m 'Update $(date)'; git push"
 
 [ -f "/home/pohum/.ghcup/env" ] && . "/home/pohum/.ghcup/env" # ghcup-env
 
