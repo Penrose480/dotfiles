@@ -1,15 +1,25 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "clangd" },
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+cmp.setup({
+  completion = {
+    autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
+  },
+  snippet = {
+    expand = function(args) luasnip.lsp_expand(args.body) end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<Tab>"]     = cmp.mapping.select_next_item(),
+    ["<S-Tab>"]   = cmp.mapping.select_prev_item(),
+    ["<CR>"]      = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  }),
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
+  }),
 })
-
-require("mason-lspconfig").setup_handlers({
-  function(server)
-    require("lspconfig")[server].setup({
-      capabilities = capabilities,
-    })
-  end,
-})
-

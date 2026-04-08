@@ -13,6 +13,7 @@ return {
       "vimdoc",
       "python",
       "javascript",
+      "rust",
       "html",
       "css",
     },
