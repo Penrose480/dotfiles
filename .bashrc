@@ -18,6 +18,7 @@ fi
  # Put your fun stuff here.
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH"
+export PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH"
 PS1="\[\e[38;2;157;124;216m\]\u@\[\e[38;2;122;162;247m\]\h \[\e[38;2;42;195;222m\]\w\n\[\e[38;2;187;154;247m\]$ \[\e[0m\]"
 feh --bg-fill ~/Wallpapers/Beautiful.jpg
 alias neofetch="fastfetch -c examples/13"
@@ -43,7 +44,7 @@ alias semacs="Text_Editor=emacs"
 alias shelix="Text_Editor=hx"
 alias bcp="g++ ~/c++/"
 alias runcp="./a.out; rm -f ./a.out"
-alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles; cp ~/.bashrc ~/dotfiles; git add .; git commit -m 'Update $(date)'; git push; cd -"
+alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles; cp ~/.bashrc ~/dotfiles; git add .; git commit -m 'Auto update $(date)'; git push; cd -"
 
 [ -f "/home/pohum/.ghcup/env" ] && . "/home/pohum/.ghcup/env" # ghcup-env
 
