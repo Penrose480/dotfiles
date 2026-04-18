@@ -2,7 +2,7 @@
 
 An opinionated suckless desktop setup on Gentoo Linux.
 
-## Stack
+## STACK
 
 WM: dwm
 
