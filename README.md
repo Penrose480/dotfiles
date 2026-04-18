@@ -14,6 +14,12 @@ SHELL: bash
 
 COMPOSITOR: picom
 
-### PHILOSOPHY
+## SETUP
+
+Clone, or copy symlinks indivually
+
+> *Note*: Highly opinionated - review configs before installing
+
+## PHILOSOPHY
 
 Bloated software lurks around every corner. I solve these issues with simple, clear, minimal code.
