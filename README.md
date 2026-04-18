@@ -16,7 +16,7 @@ COMPOSITOR: picom
 
 ## SETUP
 
-Clone, or copy symlinks indivually.
+Clone, or copy symlinks individually.
 
 > *Note*: Highly opinionated - review configs before installing
 
