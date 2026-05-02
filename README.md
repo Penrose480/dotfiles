@@ -10,7 +10,7 @@ TERMINAL: st
 
 EDITOR: neovim
 
-SHELL: bash
+SHELL: mksh
 
 COMPOSITOR: picom
 
