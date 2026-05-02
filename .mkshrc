@@ -1,0 +1,73 @@
+# /etc/skel/.mkshrc
+# Sourced by interactive mksh shells
+
+# 1. Test for an interactive shell
+case $- in
+    *i*) ;;
+    *) return ;;
+esac
+
+# 2. FIX: Manually set hostname if mksh didn't pick it up
+export HOSTNAME=$(hostname)
+
+# 3. Path exports
+export PATH="${HOME}/.cargo/bin:${PATH}"
+export PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH"
+export PATH="$PATH:$HOME/.local/opt/go/bin"
+
+# 4. MKSH PS1 CONFIGURATION
+# We use \001 (Control-A) to wrap non-printing color codes.
+D=$'\001'
+C_USER=$'\e[38;2;157;124;216m'
+C_HOST=$'\e[38;2;122;162;247m'
+C_PATH=$'\e[38;2;42;195;222m'
+C_CHAR=$'\e[38;2;187;154;247m'
+C_NONE=$'\e[0m'
+
+# Logic to shorten /home/pohum to ~
+set_ps1() {
+    local cpwd="${PWD#$HOME}"
+    [[ "$PWD" = "$HOME"* ]] && cpwd="~$cpwd" || cpwd="$PWD"
+    
+    # Format: user@host path [newline] $
+    export PS1="${D}${D}${C_USER}${D}$USER${D}${C_HOST}${D}@$HOSTNAME ${D}${C_PATH}${D}${cpwd}
+${D}${C_CHAR}${D}$ ${D}${C_NONE}${D}"
+}
+
+# Update prompt on directory change
+cd() { builtin cd "$@"; set_ps1; }
+set_ps1 
+
+# 5. Startup commands
+feh --bg-fill ~/Wallpapers/Beautiful.jpg
+alias neofetch="fastfetch -c examples/13"
+neofetch
+
+# 6. Aliases
+alias cmatrix="cmatrix -C blue"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias cdwm="nvim ~/dwm-btw/config.h"
+alias cxinit="nvim ~/.xinitrc"
+alias udwm="cd ~/dwm-btw; sudo make clean install; cd -;"
+alias seest="nvim ~/st-btw/config.h"
+alias modst="cd ~/st-btw; sudo make clean install; cd -"
+alias emerg="sudo emerge --sync; sudo emerge --ask --verbose --deep --newuse @world; clear"
+alias cmkshrc="nvim ~/.mkshrc"
+alias umkshrc="source ~/.mkshrc"
+alias cpicom="nvim ~/.config/picom/picom.conf"
+alias ci3="nvim ~/.config/i3/config"
+alias clipcopy="xclip -selection clipboard"
+alias clippaste="xclip -selection clipboard -o"
+alias snvim="Text_Editor=nvim"
+alias svim="Text_Editor=vim"
+alias semacs="Text_Editor=emacs"
+alias shelix="Text_Editor=hx"
+alias bcp="g++ ~/c++/"
+alias runcp="./a.out; rm -f ./a.out"
+alias updotgit="cd ~/dotfiles; sudo cp -r ~/.config/nvim ~/dotfiles ~/dwm-btw ~/st-btw ~/.config/picom ~/.mkshrc; git add .; git commit -m \"Auto update \$(date)\"; git push; cd -"
+
+# 7. External scripts
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
+[ -s "$HOME/.config/envman/load.sh" ] && . "$HOME/.config/envman/load.sh"
+
